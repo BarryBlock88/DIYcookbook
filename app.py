@@ -20,6 +20,8 @@ mongo = PyMongo(app)
 
 @app.route("/")
 
+def hello():
+    return "Hello World ... again!"
 
 @app.route("/get_recipes")
 
