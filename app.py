@@ -1,8 +1,4 @@
 import os
-...
-port = int(os.environ.get('PORT', 5000))
-...
-app.run(host='0.0.0.0', port=port, debug=True)
 
 from flask import (
     Flask, flash, render_template,
@@ -23,7 +19,16 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+
+
 @app.route("/get_recipes")
+
+
 def get_recipes():
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
+
+if __name__ == "__main__":
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=True)
