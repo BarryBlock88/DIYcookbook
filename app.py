@@ -20,11 +20,20 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+
+@app.route("/home")
+def home():
+
+    recipes = list(mongo.db.recipes.find())
+    return render_template("home.html", recipes=recipes)
+
+
 @app.route("/get_recipes")
 def get_recipes():
 
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -90,7 +99,7 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
-      if session["user"]:
+    if session["user"]:
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))

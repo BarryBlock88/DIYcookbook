@@ -4,8 +4,21 @@
 <h1>hey bitches!</h1>
 
     {% for recipe in recipes %}
-        {{ recipe.recipe_name }}<br>
-        {{ recipe.category_name }}<br>
-        {{ recipe.prep_time }}<br>
-    {% endfor %}
+
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-image">
+            <img class="recipe-img" src="{{ recipe.recipe_image }}" alt="{{ recipe.recipe_name }}">
+          <span class="card-title">{{ recipe.recipe_name }}<br></span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">+</i></a>
+        </div>
+        <div class="card-content">
+          <p>{{ recipe.description }}<br></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+        
 {% endblock %}
