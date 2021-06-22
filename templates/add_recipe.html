@@ -4,108 +4,88 @@
 
 <h2>Add Recipe Bitches!</h2>
 <div class="row">
-  <form class="col s12" method="POST" action="">
-    <div class="row">
-      <div class="input-field col s6">
-        <input placeholder="Recipe name" id="recipe_name" type="text" class="validate">
-        <label for="recipe_name">Recipe Name</label>
-
-
+   <form class="col s12" method="POST" action="">
+      <!--Recipe name-->
+      <div class="row recipe-name">
+         <div class="input-field col s6">
+            <input id="recipe_name" type="text" class="validate">
+            <label for="recipe_name">Recipe Name</label>
+         </div>
+      </div>
+      <!--Category selection-->
+      <div class="row category">
+         <div class="input-field col s4">
+            <select name="category_name" id="category_name" class="form-control validate" required>
+               <option value="" disabled selected>Choose Category</option>
+                        {% for category in categories %}
+                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endfor %}
+            </select>
+         </div>
       </div>
 
-      <div class="input-field col s12">
-        <select name="category_name" id="category_name" class="form-control validate" required>
-          <option value="" selected disabled>Dish Category</option>
-          <option>Breakfast</option>
-          <option>Lunch</option>
-          <option>Dinner</option>
-          <option>Desserts</option>
-       </select>
+      <!-- Recipe difficulty -->
+      <div class="row difficulty">
+         <div class="input-field col s4">
+            <i class=""></i>
+            <select class="form-control validate" name="difficulty" id="difficulty" required>
+               <option value="" selected disabled>Select Difficulty</option>
+               <option>Easy</option>
+               <option>Medium</option>
+               <option>Hard</option>
+            </select>
+         </div>
       </div>
 
-      <!-- Difficulty -->
-      <div class="row">
-        <div class="input-field col s12">
-           <i class="fas fa-dumbbell prefix dumbbell-margin"></i>
-           <select  class="form-control validate" name="difficulty" id="difficulty" required>
-              <option value="" selected disabled>Select Level</option>
-              <option>Easy</option>
-              <option>Medium</option>
-              <option>Hard</option>
-           </select>
-        </div>
-     </div>
+      <!-- Serves -->
+      <div class="row serves">
+         <div class="input-field col s6">
+            <i class=""></i>
+            <label for="servings">Serves</label>
+            <input type="text" class="form-control validate" name="servings" id="servings" aria-describedby="servings"
+               required>
+         </div>
+      </div>
 
-     <!-- Serves -->                
-     <div class="row">
-        <div class="input-field col s12">
-           <i class="fas fa-mitten prefix form-recipe-icon-margin-2"></i>
-           <label for="servings">Serves</label>
-           <input type="text" class="form-control validate" name="servings" id="servings"
-              aria-describedby="servings" required>
-        </div>
-     </div>
+      <!-- Preparation time -->
+      <div class="row prep-time">
+         <div class="input-field col s6">
+            <i class=""></i>
+            <label for="prep_time">Prep Time (HH:MM)</label>
+            <input type="text" class="form-control validate" name="prep_time" id="prep_time"
+               aria-describedby="prep_time" required>
+         </div>
+      </div>
 
-     <!-- Prep time -->
-     <div class="row">
-        <div class="input-field col s12">
-           <i class="far fa-clock prefix form-recipe-icon-margin-2"></i>
-           <label for="prep_time">Prep Time (HH:MM)</label>
-           <input type="text" class="form-control validate" name="prep_time"
-              id="prep_time" aria-describedby="prep_time" required>
-        </div>
-     </div>
+      <!-- Ingredients for recipe -->
+      <div class="row ingredient">
+         <div class="input-field col s12">
+            <i class=""></i>
+            <label for="ingredients">Ingredients</label>
+            <input type="text" class="form-control validate" name="ingredients" id="ingredients"
+               aria-describedby="ingredients" minlength="3" required>
+         </div>
+      </div>
 
-     <!-- Ingredients -->
-     <div class="row ingredient-row">
-        <div class="input-field col s12 ingr-input">
-           <i class="far fa-list-alt prefix form-recipe-icon-margin-2"></i>
-           <label for="ingredients">Ingredients</label>
-           <input type="text" class="form-control validate" name="ingredients" id="ingredients"
-              aria-describedby="ingredients" minlength="3" required>
-        </div>
-     </div>
+      <!-- Preperation steps input -->
+      <div class="row prep">
+         <div class="input-field col s12">
+            <i class=""></i>
+            <label for="preparation">Preparation</label>
+            <textarea type="text" id="preparation" name="preparation" minlength="5" maxlength="200"
+               class="materialize-textarea validate" required></textarea>
+         </div>
+      </div>
 
-     <!--Add Ingredient btn-->
-     <div class="row rem-height">
-        <div class="input-field col s1">
-           <a href="#" class=" prefix">
-           <i class="fas fa-plus add-ingr-buttn append-btn-margin-1"></i>
-           </a>
-        </div>
-     </div>
 
-     <!--  -->
-     <div class="row prep-row">
-        <div class="input-field col s12 step-input">
-           <i class="far fa-list-alt prefix form-recipe-icon-margin-2"></i>
-           <label for="preparation">Preparation</label>
-           <input type="text" class="form-control validate" name="preparation" id="preparation"
-              aria-describedby="preparation" required>
-        </div>
-     </div>
+      <div class="row center-align">
+         <div class="col s12">
+            <button class="btn waves-effect present-buttn" type="submit" name="action">Add Recipe</button>
+            <a href="{{ url_for('get_recipes') }}" class="back btn btn-cancel">To Recipes</a>
+         </div>
+      </div>
 
-   
-     <div class="row rem-height">
-        <div class="input-field col s1">
-           <a href="#" class="add-step-buttn prefix">
-           <i class="fas fa-plus append-btn-margin-2"></i>
-           </a>
-        </div>
-     </div>
-
-    
-     <div class="row center-align">
-        <div class="col s12">
-           <button class="btn waves-effect waves-light present-buttn" type="submit" name="action">Add Recipe</button>
-           <a href="{{ url_for('get_recipes') }}" class="back  btn btn-cancel" >Back to Recipes</a>
-        </div>
-     </div>
-  </div>
-</form>
-</div>
-
-  </form>
+   </form>
 </div>
 
 {% endblock %}
