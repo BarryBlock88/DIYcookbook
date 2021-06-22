@@ -4,11 +4,11 @@
 
 <h2>Add Recipe Bitches!</h2>
 <div class="row">
-   <form class="col s12" method="POST" action="">
+   <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
       <!--Recipe name-->
       <div class="row recipe-name">
          <div class="input-field col s6">
-            <input id="recipe_name" type="text" class="validate">
+            <input name="recipe_name" id="recipe_name" type="text" class="form-control validate" required>
             <label for="recipe_name">Recipe Name</label>
          </div>
       </div>
@@ -41,8 +41,8 @@
       <div class="row serves">
          <div class="input-field col s6">
             <i class=""></i>
-            <label for="servings">Serves</label>
-            <input type="text" class="form-control validate" name="servings" id="servings" aria-describedby="servings"
+            <label for="serves">Serves</label>
+            <input type="text" class="form-control validate" name="serves" id="serves" aria-describedby="serves"
                required>
          </div>
       </div>
@@ -51,9 +51,18 @@
       <div class="row prep-time">
          <div class="input-field col s6">
             <i class=""></i>
-            <label for="prep_time">Prep Time (HH:MM)</label>
+            <label for="prep_time">Preparation Time (HH:MM)</label>
             <input type="text" class="form-control validate" name="prep_time" id="prep_time"
                aria-describedby="prep_time" required>
+         </div>
+      </div>
+      <!-- Description of recipe -->
+      <div class="row description">
+         <div class="input-field col s12">
+            <i class=""></i>
+            <label for="description">Description</label>
+            <input type="text" class="form-control validate" name="description" id="description"
+               aria-describedby="description" minlength="5" required>
          </div>
       </div>
 
@@ -62,18 +71,19 @@
          <div class="input-field col s12">
             <i class=""></i>
             <label for="ingredients">Ingredients</label>
-            <input type="text" class="form-control validate" name="ingredients" id="ingredients"
+            <input type="list" class="form-control validate" name="ingredients" id="ingredients"
                aria-describedby="ingredients" minlength="3" required>
          </div>
       </div>
 
-      <!-- Preperation steps input -->
+      <!-- image of recipe URL input -->
       <div class="row prep">
          <div class="input-field col s12">
             <i class=""></i>
-            <label for="preparation">Preparation</label>
-            <textarea type="text" id="preparation" name="preparation" minlength="5" maxlength="200"
+            <label for="recipe_image">Recipe URL</label>
+            <textarea type="text" id="recipe_image" name="recipe_image" minlength="5" maxlength="200"
                class="materialize-textarea validate" required></textarea>
+               <span class="helper-text" data-error="wrong" data-success="right">Make sure the url is correct!</span>
          </div>
       </div>
 

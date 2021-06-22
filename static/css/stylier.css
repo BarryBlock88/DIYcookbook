@@ -1,3 +1,9 @@
 body {
     background: pink
 }
+
+.card-title, #recipe-title{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 100px;
+    color: beige;
+}
