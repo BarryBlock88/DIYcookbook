@@ -18,7 +18,7 @@
             <select name="category_name" id="category_name" class="form-control validate" required>
                <option value="" disabled selected>Choose Category</option>
                         {% for category in categories %}
-                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                           <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                         {% endfor %}
             </select>
          </div>
@@ -28,12 +28,12 @@
       <div class="row difficulty">
          <div class="input-field col s4">
             <i class=""></i>
-            <select class="form-control validate" name="difficulty" id="difficulty" required>
-               <option value="" selected disabled>Select Difficulty</option>
-               <option>Easy</option>
-               <option>Medium</option>
-               <option>Hard</option>
-            </select>
+            <select name="difficulty" id="difficulty" class="form-control validate" required>
+               <option value="" disabled>Choose Difficulty</option>
+               {% for diff in difficulties %}
+                  <option value="{{ diff.difficulty }}">{{ diff.difficulty }}</option>
+               {% endfor %}
+           </select>
          </div>
       </div>
 
