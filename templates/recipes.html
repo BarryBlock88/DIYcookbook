@@ -3,7 +3,7 @@
 
 <h1>hey bitches!</h1>
 
-    {% for recipe in recipes %}
+  {% for recipe in recipes %}
 
   <div class="row">
     <div class="col s12 m6">
@@ -11,8 +11,9 @@
         <div class="card-image">
             <img class="recipe-img" src="{{ recipe.recipe_image }}" alt="{{ recipe.recipe_name }}">
           <span id="recipe-title" class="card-title">{{ recipe.recipe_name }}<br></span>
-       
+          {% if session.user|lower == recipe.created_by|lower %}
           <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" ><i class="fas fa-edit"></i></a>
+          {% endif %}
         </div>
         <div class="card-content">
           <strong>{{ recipe.category_name }}</strong>
