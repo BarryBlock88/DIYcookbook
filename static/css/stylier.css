@@ -1,9 +1,20 @@
 body {
-    background: pink
+    background: pink;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+
 .card-title, #recipe-title{
-    font-family: 'Times New Roman', Times, serif;
     font-size: 100px;
     color: beige;
+}
+
+.fasser{
+    font-size: 65px;
+    color: red;
+}
+
+p{
+    font-size: 25px;
+    color: red;
 }
