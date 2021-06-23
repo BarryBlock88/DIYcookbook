@@ -1,11 +1,12 @@
 body {
     background: pink;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
 }
 
 
 .card-title, #recipe-title{
-    font-size: 100px;
+    font-size: 80px;
     color: beige;
 }
 
@@ -23,4 +24,3 @@ p{
     width: 45% !important ; height: 40% !important ; 
 }  
 
-size:

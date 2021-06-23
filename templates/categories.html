@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-
-<h3 class="light-blue-text text-darken-4 center-align">Add Category</h3>
-<a href="#modal_add" class="btn-large waves-effect waves-light red right accent-3 modal-trigger"><i
+<div class="row">
+    <h3 class="light-blue-text text-darken-4 center-align col s12">Add Categories Bitches!</h3>
+<a href="#modal_add" class="btn-large waves-effect waves-light red right center-align accent-3 modal-trigger col m6"><i
     class="fas fa-plus-square"></i></a>
+</div>
 <!-- Modal add Trigger -->
 
-<h3 class="light-blue-text text-darken-4 center-align">Categories Bitches!</h3>
-
-{% for category in categories %}
     <div class="row">
-    
-        <div class="col s12 m6">
+    {% for category in categories %}
+        <div class="col s6">
             <div class="card light-blue text-shadow center-align">
                 <div class="card-content white-text">
                 

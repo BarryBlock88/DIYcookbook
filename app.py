@@ -148,6 +148,21 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
+@app.route('/search_recipes/<query>', methods=['GET', 'POST'])
+def search_recipes(query):
+
+    if search:
+        recipes = list(
+            mongo.db.recipes.find({"category_name": query}))
+
+    return render_template("recipes.html", recipes=recipes)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
