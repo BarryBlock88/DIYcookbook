@@ -2,12 +2,16 @@
 {% block content %}
 
 <h1>hey bitches!</h1>
-<div class="container row">
-  {% for recipe in recipes %}
-
+  
+{% for category in categories %}
+<a href="{{ category.category_name }}" class="btn-small waves-effect waves-light red accent-4 modal-trigger"><i
+  class="fas fa-sandwich"></i></a>
+<h2></h2>
+{% endfor %}
 
   <div class="row">
-    <div class="col s12">
+    {% for recipe in recipes %}
+    <div class="col s12 m6">
       <div class="card">
         <div class="card-image ">
           <img class="recipe-img activator" src="{{ recipe.recipe_image }}" alt="{{ recipe.recipe_name }}">
@@ -51,8 +55,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-  {% endfor %}
+    {% endfor %}
 </div>
 {% endblock %}
