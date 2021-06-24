@@ -20,7 +20,7 @@
 <div class="row">
   <div class="col center-align ">
      <a href="{{ url_for('search_brews', query='novice brewer') }}" class="btn ">Novice Brewer</a>
-     <a href="{{ url_for('search_brews', query='sessioned brewer') }}" class="btn ">Sessioned Brewer</a>
+     <a href="{{ url_for('search_brews', query='seasioned brewer') }}" class="btn ">Seasioned Brewer</a>
      <a href="{{ url_for('search_brews', query='weekend warrior') }}" class="btn ">Weekend Warrior</a>
      <a href="{{ url_for('search_brews', query='brew master') }}" class="btn ">Brew Master</a>
   </div>
@@ -68,7 +68,7 @@
             <h2>{{ brew.brew_name }}</h2><i class="hoverable fasser fas fa-arrow-alt-circle-down right"></i>
           </span>
           <p><strong>Category: {{ brew.category_name }}</strong></p>
-          <p><strong>serves:{{ brew.serves }}</strong></p>
+          <p><strong>quantity:{{ brew.quantity }}</strong></p>
           <p><strong>Difficulty: {{ brew.difficulty }}</strong></p>
           <p><strong>Description: {{ brew.description }}</strong></p>
           <p><strong>Ingredients: {{ brew.ingredients }}</strong></p>

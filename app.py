@@ -180,7 +180,7 @@ def add_brew():
             "created_by": session["user"]
         }
         mongo.db.brews.insert_one(brew)
-        flash("Brew successfully added!")
+        flash("Bmongo "mongodb+srv://clustercodein.zjmmc.mongodb.net/myFirstDatabase" --username brewBookBoyrew successfully added!")
         return redirect(url_for("get_brews"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
