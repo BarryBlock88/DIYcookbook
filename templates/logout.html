@@ -2,11 +2,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>hey bitches!</h1>
+<h1>See you next time fellow Brewer!</h1>
 
-    {% for recipe in recipes %}
-        {{ recipe.recipe_name }}<br>
-        {{ recipe.category_name }}<br>
-        {{ recipe.prep_time }}<br>
+    {% for brew in brews %}
+        {{ brew.brew_name }}<br>
+        {{ brew.category_name }}<br>
+        {{ brew.brew_time }}<br>
     {% endfor %}
 {% endblock %}

@@ -46,25 +46,36 @@
             </div>
         </div>
 
-        <!-- Serves -->
-        <div class="row serves">
-            <div class="input-field col s6">
-                <i class=""></i>
-                <label for="serves">Serves</label>
-                <input type="text" class="form-control validate" value="{{ brew.serves }}" name="serves"
-                    id="serves" aria-describedby="serves" required>
-            </div>
-        </div>
 
-        <!-- Preparation time -->
-        <div class="row prep-time">
-            <div class="input-field col s6">
-                <i class=""></i>
-                <label for="prep_time">Preparation Time (HH:MM)</label>
-                <input type="text" class="form-control validate" name="prep_time" value="{{ brew.prep_time }}"
-                    id="prep_time" aria-describedby="prep_time" required>
-            </div>
+      <!-- quantity -->
+      <div class="row quantity">
+        <div class="input-field col s6">
+           <i class=""></i>
+           <label for="quantity">Quantity</label>
+           <input type="text" class="form-control validate" name="quantity" id="quantity" aria-describedby="quantity"
+              required>
         </div>
+     </div>
+
+     <!-- ABV of beer -->
+     <div class="row abv">
+        <div class="input-field col s6">
+           <i class=""></i>
+           <label for="abv">ABV (%)</label>
+           <input type="text" class="form-control validate" name="abv" id="abv"
+              aria-describedby="abv" required>
+        </div>
+     </div>
+
+     <!-- Preparation time -->
+     <div class="row brew-time">
+        <div class="input-field col s6">
+           <i class=""></i>
+           <label for="brew_time">Brewing Time (Days)</label>
+           <input type="text" class="form-control validate" name="brew_time" id="brew_time"
+              aria-describedby="brew_time" required>
+        </div>
+     </div>
         <!-- Description of brew -->
         <div class="row description">
             <div class="input-field col s12">

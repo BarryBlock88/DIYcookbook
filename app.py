@@ -35,40 +35,41 @@ def get_brews():
     return render_template("brews.html", brews=brews)
 
 
-@app.route("/register", methods=["GET", "POST"])
-def register():
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+              {"username": request.form.get("username").lower()} or {"email": request.form.get("email").lower()})
 
         if existing_user:
             flash("Username already exists")
-            return redirect(url_for("register"))
+            return redirect(url_for("signup"))
 
-        register = {
+        signup = {
+            "email": request.form.get("email").lower(),
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
-        mongo.db.users.insert_one(register)
+        mongo.db.users.insert_one(signup)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successfull!")
-    return render_template("register.html")
+        flash("Sign up Successfull!")
+    return render_template("signup.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         # check if username exists in database
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            {"username": request.form.get("username").lower()} or {"email": request.form.get("email").lower()})
 
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
+                    session["user"] = request.form.get("username").lower() or request.form.get("email").lower() 
                     flash("Welcome, {}".format(request.form.get("username")))
             else:
                 # invalid password match
@@ -83,7 +84,7 @@ def login():
     return render_template("login.html")
 
 
-# registered user logout function
+# signuped user logout function
 @app.route("/logout")
 def logout():
     flash("Au revoir!")
@@ -171,16 +172,17 @@ def add_brew():
         brew = {
             "brew_name": request.form.get("brew_name"),
             "category_name": request.form.get("category_name"),
-            "prep_time": request.form.get("prep_time"),
+            "brew_time": request.form.get("brew_time"),
             "difficulty": request.form.get("difficulty"),
             "quantity": request.form.get("quantity"),
+            "abv": request.form.get("abv"),
             "description": request.form.get("description"),
             "ingredients": request.form.getlist("ingredients"),
             "brew_image": request.form.get("brew_image"),
             "created_by": session["user"]
         }
         mongo.db.brews.insert_one(brew)
-        flash("Bmongo "mongodb+srv://clustercodein.zjmmc.mongodb.net/myFirstDatabase" --username brewBookBoyrew successfully added!")
+        flash("Brew successfully added!")
         return redirect(url_for("get_brews"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -194,9 +196,10 @@ def edit_brew(brew_id):
         submit = {
             "brew_name": request.form.get("brew_name"),
             "category_name": request.form.get("category_name"),
-            "prep_time": request.form.get("prep_time"),
+            "brew_time": request.form.get("brew_time"),
             "difficulty": request.form.get("difficulty"),
             "quantity": request.form.get("quantity"),
+            "abv": request.form.get("abv"),
             "description": request.form.get("description"),
             "ingredients": request.form.getlist("ingredients"),
             "brew_image": request.form.get("brew_image"),
