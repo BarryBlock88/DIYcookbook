@@ -2,14 +2,14 @@
 {% block content %}
 
 
-<h2>Add Recipe Bitches!</h2>
+<h2>Add a Brew of your own!</h2>
 <div class="row">
-   <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
-      <!--Recipe name-->
-      <div class="row recipe-name">
+   <form class="col s12" method="POST" action="{{ url_for('get_brews') }}">
+      <!--brew name-->
+      <div class="row brew-name">
          <div class="input-field col s6">
-            <input name="recipe_name" id="recipe_name" type="text" class="form-control validate" required>
-            <label for="recipe_name">Recipe Name</label>
+            <input name="brew_name" id="brew_name" type="text" class="form-control validate" required>
+            <label for="brew_name">Brew Name</label>
          </div>
       </div>
       <!--Category selection-->
@@ -24,7 +24,7 @@
          </div>
       </div>
 
-      <!-- Recipe difficulty -->
+      <!-- brew difficulty -->
       <div class="row difficulty">
          <div class="input-field col s4">
             <i class=""></i>
@@ -37,26 +37,26 @@
          </div>
       </div>
 
-      <!-- Serves -->
-      <div class="row serves">
+      <!-- quantity -->
+      <div class="row quantity">
          <div class="input-field col s6">
             <i class=""></i>
-            <label for="serves">Serves</label>
-            <input type="text" class="form-control validate" name="serves" id="serves" aria-describedby="serves"
+            <label for="quantity">Quantity</label>
+            <input type="text" class="form-control validate" name="quantity" id="quantity" aria-describedby="quantity"
                required>
          </div>
       </div>
 
       <!-- Preparation time -->
-      <div class="row prep-time">
+      <div class="row brew-time">
          <div class="input-field col s6">
             <i class=""></i>
-            <label for="prep_time">Preparation Time (HH:MM)</label>
-            <input type="text" class="form-control validate" name="prep_time" id="prep_time"
-               aria-describedby="prep_time" required>
+            <label for="brew_time">Brewing Time (Days)</label>
+            <input type="text" class="form-control validate" name="brew_time" id="brew_time"
+               aria-describedby="brew_time" required>
          </div>
       </div>
-      <!-- Description of recipe -->
+      <!-- Description of brew -->
       <div class="row description">
          <div class="input-field col s12">
             <i class=""></i>
@@ -66,7 +66,7 @@
          </div>
       </div>
 
-      <!-- Ingredients for recipe -->
+      <!-- Ingredients for brew -->
       <div class="row ingredient">
          <div class="input-field col s12">
             <i class=""></i>
@@ -76,12 +76,12 @@
          </div>
       </div>
 
-      <!-- image of recipe URL input -->
-      <div class="row prep">
+      <!-- image of brew URL input -->
+      <div class="row img-beer">
          <div class="input-field col s12">
             <i class=""></i>
-            <label for="recipe_image">Recipe URL</label>
-            <textarea type="text" id="recipe_image" name="recipe_image" minlength="5" maxlength="200"
+            <label for="brew_image">Brew URL</label>
+            <textarea type="text" id="brew_image" name="brew_image" minlength="5" maxlength="200"
                class="materialize-textarea validate" required></textarea>
                <span class="helper-text" data-error="wrong" data-success="right">Make sure the url is correct!</span>
          </div>
@@ -90,8 +90,8 @@
 
       <div class="row center-align">
          <div class="col s12">
-            <button class="btn waves-effect present-buttn" type="submit" name="action">Add Recipe</button>
-            <a href="{{ url_for('get_recipes') }}" class="back btn btn-cancel">To Recipes</a>
+            <button class="btn waves-effect present-buttn" type="submit" name="action">Add Brew</button>
+            <a href="{{ url_for('get_brews') }}" class="back btn btn-cancel">To Brews</a>
          </div>
       </div>
 

@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align">Registration</h3>
+    <h3 class="center-align">Sign up to Brew Book</h3>
 
     <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('signup') }}">
             <div class="card-panel">
                 <!-- username -->
                 <div class="row">
@@ -24,11 +24,11 @@
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <!-- register -->
+                <!-- signup -->
                 <div class="row">
                     <div class="col s12">
                         <button type="submit" class="btn-large light-teal darken-4 center-align text-shadow">
-                            Register as for Access  <i class="fas fa-sign-in-alt"></i>
+                            signup as for Access  <i class="fas fa-sign-in-alt"></i>
                         </button>
                     </div>
                 </div>

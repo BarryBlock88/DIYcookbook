@@ -1,11 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="container">
+    <div class="row">
+    <div class="col s12 align">
+    <h1 class="title-main">Brew Book</h1>
+    <p class="title-main">Recipes by home brewers for home brewers!</p>
+</div>
+</div>
+</div>
 
-<h1>hey bitches! we  are home</h1>
+<div class="row align">
+    <div class="col s12 container center-align">
+        <div class="carousel pic container">
+            <div class="center-align">
+                <img class="centre-align" src="https://s3.amazonaws.com/images.ecwid.com/images/32880331/1605861747.jpg" alt="beer">
+            </div>
+            <div class="center-align">
+                <img class="centre-align" src="https://www.globexs.com/wp-content/uploads/2020/06/breweries_antwerp.jpg" alt="beer">
+            </div>
+            <div class="center-align">
+                <img class="center-align" src="https://www.zettpoint.com/wp-content/uploads/2017/08/beertap.jpg" alt="beer">
+            </div>
+            <div class="center-align">
+                <img class="center-align" src="https://images.askmen.com/1080x540/2019/03/29-062407-10_amazing_ways_to_drink_beer.jpg" alt="beer">
+            </div>
+        </div>     
+</div>
+{% endblock content %}
+{% block footer %}       
 
-    {% for recipe in recipes %}
-        {{ recipe.recipe_name }}<br>
-        {{ recipe.category_name }}<br>
-        {{ recipe.description }}<br>
-    {% endfor %}
-{% endblock %}
+{% endblock footer %}

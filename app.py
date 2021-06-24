@@ -24,15 +24,15 @@ mongo = PyMongo(app)
 @app.route("/home")
 def home():
 
-    recipes = list(mongo.db.recipes.find())
-    return render_template("home.html", recipes=recipes)
+    brews = list(mongo.db.brews.find())
+    return render_template("home.html", brews=brews)
 
 
-@app.route("/get_recipes")
-def get_recipes():
+@app.route("/get_brews")
+def get_brews():
 
-    recipes = list(mongo.db.recipes.find())
-    return render_template("recipes.html", recipes=recipes)
+    brews = list(mongo.db.brews.find())
+    return render_template("brews.html", brews=brews)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -120,7 +120,7 @@ def add_category():
             "category_name": request.form.get("category_name")
         }
         mongo.db.categories.insert_one(category)
-        flash("New Category Added Bitches!")
+        flash("New Category of Beer added!")
         return redirect(url_for("get_categories"))
 
     return render_template("categories.html")
@@ -133,7 +133,7 @@ def edit_category(category_id):
             "category_name": request.form.get("category_name")
         }
         mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
-        flash("Category Updated Bitches!")
+        flash("Brew Category Updated!")
         return redirect(url_for("get_categories"))
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
@@ -144,81 +144,79 @@ def edit_category(category_id):
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category Deleted Bitches!")
+    flash("Category Deleted!")
     return redirect(url_for("get_categories"))
 
 
-@app.route('/search_recipes/<query>', methods=['GET', 'POST'])
-def search_recipes(query):
+@app.route('/search_brews/<query>', methods=['GET', 'POST'])
+def search_brews(query):
 
     if search:
-        recipes = list(
-            mongo.db.recipes.find({"category_name": query}))
+        brews = list(
+            mongo.db.brews.find({"category_name": query}))
 
-    return render_template("recipes.html", recipes=recipes)
+    return render_template("brews.html", brews=brews)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
-    return render_template("recipes.html", recipes=recipes)
+    brews = list(mongo.db.brews.find({"$text": {"$search": query}}))
+    return render_template("brews.html", brews=brews)
 
 
-@app.route("/add_recipe", methods=["GET", "POST"])
-def add_recipe():
+@app.route("/add_brew", methods=["GET", "POST"])
+def add_brew():
     if request.method == "POST":
-        recipe = {
-            "recipe_name": request.form.get("recipe_name"),
+        brew = {
+            "brew_name": request.form.get("brew_name"),
             "category_name": request.form.get("category_name"),
             "prep_time": request.form.get("prep_time"),
             "difficulty": request.form.get("difficulty"),
-            "serves": request.form.get("serves"),
+            "quantity": request.form.get("quantity"),
             "description": request.form.get("description"),
             "ingredients": request.form.getlist("ingredients"),
-            "recipe_image": request.form.get("recipe_image"),
-            "image_source": request.form.get("image_source"),
+            "brew_image": request.form.get("brew_image"),
             "created_by": session["user"]
         }
-        mongo.db.recipes.insert_one(recipe)
-        flash("Recipe Successfully added Bitches!")
-        return redirect(url_for("get_recipes"))
+        mongo.db.brews.insert_one(brew)
+        flash("Brew successfully added!")
+        return redirect(url_for("get_brews"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
-    return render_template("add_recipe.html", categories=categories, difficulties=difficulties)
+    return render_template("add_brew.html", categories=categories, difficulties=difficulties)
 
 
-@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
-def edit_recipe(recipe_id):
+@app.route("/edit_brew/<brew_id>", methods=["GET", "POST"])
+def edit_brew(brew_id):
     if request.method == "POST":
         submit = {
-            "recipe_name": request.form.get("recipe_name"),
+            "brew_name": request.form.get("brew_name"),
             "category_name": request.form.get("category_name"),
             "prep_time": request.form.get("prep_time"),
             "difficulty": request.form.get("difficulty"),
-            "serves": request.form.get("serves"),
+            "quantity": request.form.get("quantity"),
             "description": request.form.get("description"),
             "ingredients": request.form.getlist("ingredients"),
-            "recipe_image": request.form.get("recipe_image"),
-            "image_source": request.form.get("image_source"),
+            "brew_image": request.form.get("brew_image"),
             "created_by": session["user"]
         }
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
-        flash("Recipe Successfully Updated Bitches!")
-        return redirect(url_for("get_recipes"))
+        mongo.db.brews.update({"_id": ObjectId(brew_id)}, submit)
+        flash("Brew successfully Updated!")
+        return redirect(url_for("get_brews"))
 
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    brew = mongo.db.brews.find_one({"_id": ObjectId(brew_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
-    return render_template("edit_recipe.html", recipe=recipe, categories=categories, difficulties=difficulties)
+    return render_template("edit_brew.html", brew=brew, categories=categories, difficulties=difficulties)
 
 
-@app.route("/delete_recipe/<recipe_id>")
-def delete_recipe(recipe_id):
-    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
-    flash("Recipe Deleted Bitches!")
-    return redirect(url_for("get_recipes"))
+@app.route("/delete_brew/<brew_id>")
+def delete_brew(brew_id):
+    mongo.db.brews.remove({"_id": ObjectId(brew_id)})
+    flash("Brew now Deleted!")
+    return redirect(url_for("get_brews"))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

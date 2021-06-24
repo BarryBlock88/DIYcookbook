@@ -1,8 +1,26 @@
-body {
+
+
+/*____main-body_styles____*/
+
+body, html {
+    margin: 0;
+    padding: 0;
     background: pink;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: relative;
+    min-height: 100vh;
     
-}
+  }
+
+  
+  /*____footer-positioning_____*/
+  
+  footer {
+      bottom: 0;
+      height:100px;
+      width: 100%;
+      position: relative;      
+  }
 
 
 .card-title, #recipe-title{
@@ -14,6 +32,30 @@ body {
     font-size: 65px;
     color: red;
 }
+
+.title-brand{
+    font-size: 60px;
+    color: beige;
+}
+.fa-beer{
+    font-size: 50px;
+    color: beige;
+
+}
+
+.title-main{
+    text-align: center;
+}
+
+.carousel{
+    overflow: visible;
+}
+
+.pic img {
+    height: calc(50vh - 100px); /*tip on how to centre images in the slick carousel from https://stackoverflow.com/questions/34670430/slick-js-how-to-align-images-in-center-of-carousel*/
+    width: auto;
+    margin: 0 auto;
+  }
 
 p{
     font-size: 25px;
