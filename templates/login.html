@@ -12,7 +12,7 @@
                 <div class="input-field col s12">
                     <input id="username" name="username" type="text" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="username">Username</label>
+                    <label for="username"><i class="fas fa-user-circle"></i>  Username </label>
                 </div>
             </div>
             <!-- password -->
@@ -20,21 +20,20 @@
                 <div class="input-field col s12">
                     <input id="password" name="password" type="password" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="password">Password</label>
+                    <label for="password"><i class="fas fa-key"></i>   Password </label>
                 </div>
             </div>
             <!-- user login submit-->
             <div class="row">
-                <div class="col s12">
-                    <button type="submit" class="btn-large light-teal darken-4 center-align text-shadow">
-                        Login <i class="fas fa-sign-in-alt"></i>
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn-large form-btn center text-shadow">
+                        Login   <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
             </div>
              <!-- sign up as a new user -->
-            <div id="signup">
-                <h5>Dont have an Account?</h5>
-                <a href="{{ url_for('signup') }}" id="btn-small blue">Sign Up</a>
+            <div id="signup" class="center-align">
+                <h5>Dont have an Account?  <a href="{{ url_for('signup') }}" id="signup-link">Sign Up</a></h5>
             </div>
         </div>
     </form>

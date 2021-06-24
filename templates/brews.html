@@ -26,7 +26,7 @@
   </div>
 </div>
 {% for category in categories %}
-<a href="{{ category.category_name }}" class="btn-small waves-effect waves-light red accent-4 modal-trigger"></i></a>
+<a href="{{ category.category_name }}" class="btn-small waves-effect waves-light accent-4 modal-trigger"></i></a>
 <h2></h2>
 {% endfor %}
 
@@ -41,7 +41,7 @@
               <a class="btn waves-effect waves-light edit-btn" href="{{ url_for('edit_brew', brew_id=brew._id) }}"><i
                   class="fas fa-edit"></i></a>
               <!-- Modal Trigger -->
-              <a href="#modal_delete" class="btn waves-effect waves-light red accent-4 modal-trigger del-btn"><i
+              <a href="#modal_delete" class="btn waves-effect waves-light accent-4 modal-trigger del-btn"><i
                   class="fas fa-trash-alt"></i></a>
               <!-- Modal Structure -->
               <div id="modal_delete" class="modal">
@@ -58,12 +58,12 @@
           {% endif %}
         </div>
         <div class="card-content">
-          <p>by: {{ brew.created_by }}<span class="card-title activator red"><i
+          <p>by: {{ brew.created_by }}<span class="card-title activator"><i
                 class="hoverable fasser fas fa-arrow-alt-circle-up right"></i></span></p>
 
         </div>
         <div class="card-reveal">
-          <span class="card-title red">
+          <span class="card-title black center-align">
             <h2>{{ brew.brew_name }}</h2><i class="hoverable fasser fas fa-arrow-alt-circle-down right"></i>
           </span>
           <p><strong>Category: {{ brew.category_name }}</strong></p>

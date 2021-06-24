@@ -7,7 +7,7 @@
     <form class="col s12" method="POST" action="{{ url_for('edit_brew', brew_id=brew._id) }}">
         <!--brew name-->
         <div class="row brew-name">
-            <div class="input-field col s6">
+            <div class="input-field col s8">
                 <input name="brew_name" id="brew_name" type="text" value="{{ brew.brew_name }}"
                     class="form-control validate" required>
                 <label for="brew_name">brew Name</label>
@@ -15,7 +15,7 @@
         </div>
         <!-- selection-->
         <div class="row category">
-            <div class="input-field col s4">
+            <div class="input-field col s10 m6">
                 <select name="category_name" id="category_name" class="form-control validate" required>
                     <option value="" disabled>Choose Category</option>
                     {% for category in categories %}
@@ -31,7 +31,7 @@
 
         <!-- brew difficulty -->
         <div class="row difficulty">
-            <div class="input-field col s4">
+            <div class="input-field col s10 m6">
                 <i class=""></i>
                 <select name="difficulty" id="difficulty" class="form-control validate" required>
                     <option value="" disabled>Choose Level</option>
@@ -49,7 +49,7 @@
 
       <!-- quantity -->
       <div class="row quantity">
-        <div class="input-field col s6">
+        <div class="input-field col s8">
            <i class=""></i>
            <label for="quantity">Quantity (L)</label>
            <input type="text" class="form-control validate" name="quantity" id="quantity" value="{{ brew.quantity }}" aria-describedby="quantity"
@@ -59,7 +59,7 @@
 
      <!-- ABV of beer -->
      <div class="row abv">
-        <div class="input-field col s6">
+        <div class="input-field col s8">
            <i class=""></i>
            <label for="abv">ABV (%)</label>
            <input type="text" class="form-control validate" name="abv" value="{{ brew.abv }}" id="abv"
@@ -69,7 +69,7 @@
 
      <!-- Preparation time -->
      <div class="row brew-time">
-        <div class="input-field col s6">
+        <div class="input-field col s8">
            <i class=""></i>
            <label for="brew_time">Brewing Time (days)</label>
            <input type="text" class="form-control validate" name="brew_time" value="{{ brew.brew_time }}" id="brew_time"
