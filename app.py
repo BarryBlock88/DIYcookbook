@@ -28,13 +28,6 @@ def home():
     return render_template("home.html", brews=brews)
 
 
-@app.route("/get_brews")
-def get_brews():
-
-    brews = list(mongo.db.brews.find())
-    return render_template("brews.html", brews=brews)
-
-
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -147,6 +140,14 @@ def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category Deleted!")
     return redirect(url_for("get_categories"))
+
+
+@app.route("/get_brews")
+def get_brews():
+
+    brews = list(mongo.db.brews.find())
+    return render_template("brews.html", brews=brews)
+
 
 
 @app.route('/search_brews/<query>', methods=['GET', 'POST'])

@@ -5,46 +5,83 @@
 body, html {
     margin: 0;
     padding: 0;
-    background: pink;
+    background: darkgoldenrod;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     position: relative;
-    min-height: 100vh;
+    height: 100%;
     
   }
 
-  
-  /*____footer-positioning_____*/
-  
-  footer {
-      bottom: 0;
-      height:100px;
-      width: 100%;
-      position: relative;      
-  }
+/*----- Credit: for sticky footer: https://css-tricks.com/couple-takes-sticky-footer/ -----*/
 
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content {
+    flex: 1 0 auto;
+  }
+  
+  .footer {
+    flex-shrink: 0;
+  }
+  .social-link-item .fab{
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: beige !important;
+  }
+/* _________  cards __________ */
 
 .card-title, #recipe-title{
+    font-size: 80px;
+    margin-bottom: 5px;
+    color: beige;
+}
+
+.signup-btn{
+    background-color: beige;
+    color: black;
+}
+.signup-btn:hover{
+    background-color: darkgoldenrod;
+    border: beige;
+    color: beige;
+}
+
+
+.cat-card{
+    color: goldenrod;
+    background-color: darkslategray;
+    border: darkgoldenrod 1px solid;
+}
+
+.title-brand{
+    font-size: 50px;
+    color: black;
+    padding-left: 5px;
+}
+.fa-beer{
+    font-size: 40px;
+    padding: 5px;
+    color: black;
+
+}
+#brew-title{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+.title-main{
+    text-align: center;
     font-size: 80px;
     color: beige;
 }
 
-.fasser{
-    font-size: 65px;
-    color: red;
-}
-
-.title-brand{
-    font-size: 60px;
-    color: beige;
-}
-.fa-beer{
-    font-size: 50px;
-    color: beige;
-
-}
-
-.title-main{
+.sub-main{
     text-align: center;
+    font-size: 50px;
+    font-style: italic;
+    color: beige;
 }
 
 .carousel{
@@ -59,10 +96,39 @@ body, html {
 
 p{
     font-size: 25px;
-    color: red;
+    color: black;
 }
 
+/*______Navbar______*/
+
+nav{
+    background-color: beige;
+    color: black;
+}
+
+nav li a{
+    color: black;
+    font-size: 20px
+}
+
+
 .modal { 
-    width: 45% !important ; height: 40% !important ; 
+    width: 45% !important ; 
+    height: 40% !important ; 
 }  
 
+.fasser{
+    font-size: 65px;
+    color: goldenrod;
+}
+
+.del-btn{
+    margin-top: 1px;
+    color: beige;
+    background-color: darkred;
+}
+.edit-btn{
+    margin-top: 1px;
+    color: black;
+    background-color: gold;
+}

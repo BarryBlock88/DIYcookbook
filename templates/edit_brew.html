@@ -34,7 +34,7 @@
             <div class="input-field col s4">
                 <i class=""></i>
                 <select name="difficulty" id="difficulty" class="form-control validate" required>
-                    <option value="" disabled>Choose Difficulty</option>
+                    <option value="" disabled>Choose Level</option>
                     {% for diff in difficulties %}
                         {% if diff.difficulty == brew.difficulty %}
                             <option value="{{ diff.difficulty }}" selected>{{ diff.difficulty }}</option>
@@ -51,8 +51,8 @@
       <div class="row quantity">
         <div class="input-field col s6">
            <i class=""></i>
-           <label for="quantity">Quantity</label>
-           <input type="text" class="form-control validate" name="quantity" id="quantity" aria-describedby="quantity"
+           <label for="quantity">Quantity (L)</label>
+           <input type="text" class="form-control validate" name="quantity" id="quantity" value="{{ brew.quantity }}" aria-describedby="quantity"
               required>
         </div>
      </div>
@@ -62,7 +62,7 @@
         <div class="input-field col s6">
            <i class=""></i>
            <label for="abv">ABV (%)</label>
-           <input type="text" class="form-control validate" name="abv" id="abv"
+           <input type="text" class="form-control validate" name="abv" value="{{ brew.abv }}" id="abv"
               aria-describedby="abv" required>
         </div>
      </div>
@@ -71,8 +71,8 @@
      <div class="row brew-time">
         <div class="input-field col s6">
            <i class=""></i>
-           <label for="brew_time">Brewing Time (Days)</label>
-           <input type="text" class="form-control validate" name="brew_time" id="brew_time"
+           <label for="brew_time">Brewing Time (days)</label>
+           <input type="text" class="form-control validate" name="brew_time" value="{{ brew.brew_time }}" id="brew_time"
               aria-describedby="brew_time" required>
         </div>
      </div>

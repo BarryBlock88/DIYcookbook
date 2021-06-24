@@ -4,7 +4,7 @@
 
 <h2>Add a Brew of your own!</h2>
 <div class="row">
-   <form class="col s12" method="POST" action="{{ url_for('get_brews') }}">
+   <form class="col s12" method="POST" action="{{ url_for('add_brew') }}">
       <!--brew name-->
       <div class="row brew-name">
          <div class="input-field col s6">
@@ -29,7 +29,7 @@
          <div class="input-field col s4">
             <i class=""></i>
             <select name="difficulty" id="difficulty" class="form-control validate" required>
-               <option value="" disabled>Choose Difficulty</option>
+               <option value="" disabled>Choose Level</option>
                {% for diff in difficulties %}
                   <option value="{{ diff.difficulty }}">{{ diff.difficulty }}</option>
                {% endfor %}
@@ -41,7 +41,7 @@
       <div class="row quantity">
          <div class="input-field col s6">
             <i class=""></i>
-            <label for="quantity">Quantity</label>
+            <label for="quantity">Quantity (L)</label>
             <input type="text" class="form-control validate" name="quantity" id="quantity" aria-describedby="quantity"
                required>
          </div>
