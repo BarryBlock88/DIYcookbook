@@ -27,16 +27,7 @@ body, html {
   .footer {
     flex-shrink: 0;
   }
-  .social-link-item .fab{
-    font-size: 20px;
-    margin-bottom: 5px;
-    color: beige !important;
-  }
-  .social-link-item .fab:hover{
-    font-size: 20px;
-    margin-bottom: 5px;
-    color: black !important;
-  }
+
 /* _________  cards __________ */
 
 .card-title, #recipe-title{
@@ -45,23 +36,6 @@ body, html {
     color: beige;
 }
 
-.signup-btn{
-    background-color: beige;
-    color: black;
-}
-.signup-btn:hover{
-    background-color: darkgoldenrod;
-    border: beige;
-    color: beige;
-}
-.form-btn{
-    background-color: black;
-    color: beige;
-}
-.form-btn:hover{
-    background-color: darkolivegreen;
-    color: black;
-}
 
 #signup-link a:active{
 color: darkolivegreen;
@@ -73,7 +47,7 @@ color: darkolivegreen;
     background-color: darkslategray;
     border: darkgoldenrod 1px solid;
 }
-
+/*________titles text_________*/
 .title-brand{
     font-size: 40px;
     color: black;
@@ -104,7 +78,7 @@ color: darkolivegreen;
     font-style: italic;
     color: beige;
 }
-
+/*_______home page carousel____*/
 .carousel{
     overflow: visible;
 }
@@ -141,15 +115,44 @@ nav li a{
     font-size: 20px
 }
 
-
+/*______modal_____*/
 .modal { 
     width: 45% !important ; 
     height: 40% !important ; 
 }  
-
+/*_____icon______*/
 .fasser{
     font-size: 65px;
     color: goldenrod;
+}
+
+.social-link-item .fab{
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: beige !important;
+  }
+.social-link-item .fab:hover{
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: black !important;
+  }
+/*______BTN_____*/
+.signup-btn{
+    background-color: beige;
+    color: black;
+}
+.signup-btn:hover{
+    background-color: darkgoldenrod;
+    border: beige;
+    color: beige;
+}
+.form-btn{
+    background-color: black;
+    color: beige;
+}
+.form-btn:hover{
+    background-color: darkolivegreen;
+    color: black;
 }
 
 .btn .del-btn{
