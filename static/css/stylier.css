@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500;700&display=swap');
 
 
 /*____main-body_styles____*/
@@ -6,7 +7,7 @@ body, html {
     margin: 0;
     padding: 0;
     background: darkgoldenrod;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Sunflower', sans-serif;
     position: relative;
     height: 100%;
     
