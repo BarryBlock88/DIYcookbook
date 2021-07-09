@@ -248,4 +248,27 @@ body::-webkit-scrollbar {
 	height: calc(50vh - 100px);
 	width: auto;
 	margin: 0 auto;
-}}
+}
+
+.carousel h1{
+  font-size: 20px;
+  bottom:20px !important;
+}
+
+.title-main {
+  font-size: 45px;
+}
+.sub-main{
+  font-size: 20px;
+}
+
+.carousel.carousel-slider .carousel-fixed-item #sign-up{
+bottom: unset!important;
+font-size: 20px;
+}
+
+.fa-bars{
+  color: black;
+  font-size: 30px;
+}
+  }
