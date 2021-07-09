@@ -2,39 +2,54 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col s8 align">
-            <h1 class="title-main">Brew Book
+        <div class="col s12">
+
+            <h1 class="title-main col centre-align s12">Brew Book
             </h1>
-            <a class="btn signup-btn s4" href="{{ url_for('signup') }}">Sign Up Now!</a>
-            <p class="sub-main s10">Recipes by home brewers for home brewers!</p>
+            <p class="sub-main col centre-align s12">Recipes by home brewers for home brewers!</p>
         </div>
     </div>
 </div>
 
-<div class="row align">
+<section class="row align">
     <div class="col s12 container center-align">
-        <div class="carousel pic container">
-            <div class="center-align">
-                <img class="centre-align" src="https://s3.amazonaws.com/images.ecwid.com/images/32880331/1605861747.jpg"
-                    alt="beer">
+        <div class="pic container">
+            <div class="carousel carousel-slider center" id="auto-slide" >
+                <div class="carousel-fixed-item bottom">
+                    <p class="btn signup-btn centre-align col s4" href="{{ url_for('signup') }}">Sign Up Now!</p>
+                </div>
+                <div class="carousel-item white-text" href="#one!">
+                    <h2 class="white-text carousel-fixed-item center">Delicous Beers</h2>
+                    <p><img class="centre-align"
+                            src="https://s3.amazonaws.com/images.ecwid.com/images/32880331/1605861747.jpg" alt="beer">
+                    </p>
+                </div>
+                <div class="carousel-item white-text" href="#two!">
+                    <p class="white-text">Build your community!</p>
+                    <p class="white-text"><img class="centre-align"
+                        src="https://www.thespinalcentre.com.au/wp-content/uploads/cheers-beer-yoga.jpg" alt="beer">
+                </p>
+                </div>
+                <div class="carousel-item white-text" href="#three!">
+                    <h2 class="white-text">Join thousands of Brewers</h2>
+                    <p><img class="centre-align"
+                            src="https://www.globexs.com/wp-content/uploads/2020/06/breweries_antwerp.jpg" alt="beer">
+                    </p>
+                </div>
+                <div class="carousel-item white-text" href="#four!">
+                    <h2>Become a Brew master</h2>
+                    <p class="white-text"><img class="center-align"
+                            src="https://www.zettpoint.com/wp-content/uploads/2017/08/beertap.jpg" alt="beer"></p>
+                </div>
+                <div class="carousel-item white-text" href="#four!">
+                    <h2>Fill your world with taste</h2>
+                    <p class="white-text"><img class="center-align"
+                            src="https://images.askmen.com/1080x540/2019/03/29-062407-10_amazing_ways_to_drink_beer.jpg"
+                            alt="beer"></p>
+                </div>
             </div>
-            <div class="center-align">
-                <img class="centre-align" src="https://www.globexs.com/wp-content/uploads/2020/06/breweries_antwerp.jpg"
-                    alt="beer">
-            </div>
-            <div class="center-align">
-                <img class="center-align" src="https://www.zettpoint.com/wp-content/uploads/2017/08/beertap.jpg"
-                    alt="beer">
-            </div>
-            <div class="center-align">
-                <img class="center-align"
-                    src="https://images.askmen.com/1080x540/2019/03/29-062407-10_amazing_ways_to_drink_beer.jpg"
-                    alt="beer">
-            </div>
-        </div>
-    </div>
-</div>
-    {% endblock content %}
-    {% block footer %}
+</section>
+{% endblock content %}
+{% block footer %}
 
-    {% endblock footer %}
+{% endblock footer %}

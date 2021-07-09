@@ -10,7 +10,6 @@
         crossorigin="anonymous" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
         type="text/css">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500;700&display=swap" rel="stylesheet"> 
@@ -86,9 +85,9 @@
     
 </div>
     <!--social media links article-->
-    <footer>
+    <footer class="page-footer" style="position:fixed;bottom:0;left:0;width:100%;" >
         <div class="container">
-            <ul class="social-area row">
+            <ul class="social-area row valign-wrapper">
                 <li class="social-link-item col s3 center-align">
                     <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="facebook"><i
                             class="fab fa-facebook-square" aria-hidden="true"></i>
@@ -115,7 +114,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}
     {% endblock scripts%}

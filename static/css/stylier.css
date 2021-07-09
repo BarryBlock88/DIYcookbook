@@ -13,21 +13,20 @@ body, html {
     
   }
 
-/*----- Credit: for sticky footer: https://css-tricks.com/couple-takes-sticky-footer/ -----*/
+/*----- Credit: for sticky footer: https://materializecss.com/footer.html -----*/
 
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .content {
-    flex: 1 0 auto;
-  }
-  
-  .footer {
-    flex-shrink: 0;
-  }
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
+main {
+  flex: 1 0 auto;
+}
+.page-footer{
+  background-color: transparent;
+}
 /* _________  cards __________ */
 
 .card-title, #recipe-title{
@@ -79,15 +78,7 @@ color: darkolivegreen;
     color: beige;
 }
 /*_______home page carousel____*/
-.carousel{
-    overflow: visible;
-}
 
-.pic img {
-    height: calc(70vh - 100px); /*tip on how to centre images in the slick carousel from https://stackoverflow.com/questions/34670430/slick-js-how-to-align-images-in-center-of-carousel*/
-    width: auto;
-    margin: 0 auto;
-  }
 
 p{
     font-size: 25px;
