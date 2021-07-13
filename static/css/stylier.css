@@ -13,6 +13,10 @@ body, html {
     
   }
 
+#filler{
+  margin-top: 40px ;
+}
+
 /*----- Credit: for sticky footer: https://materializecss.com/footer.html -----*/
 
 body {
@@ -76,9 +80,19 @@ color: darkolivegreen;
     font-size: 30px;
     font-style: italic;
     color: beige;
+    margin-bottom: 0%;
 }
 /*_______home page carousel____*/
 
+
+.carousel.carousel-slider{
+  resize: vertical 60%;
+  }
+
+.carousel-fixed-item.img-text{
+    font-size: 35px;
+    background-color: rgba(0, 0, 0, 0.253);
+    }
 
 p{
     font-size: 25px;
@@ -263,7 +277,6 @@ body::-webkit-scrollbar {
 }
 
 .carousel.carousel-slider .carousel-fixed-item #sign-up{
-bottom: unset!important;
 font-size: 20px;
 }
 
