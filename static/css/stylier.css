@@ -94,9 +94,13 @@ color: darkolivegreen;
     background-color: rgba(0, 0, 0, 0.253);
     }
 
-p{
+.cat-card{
+ margin: auto;
+}
+
+p a{
     font-size: 25px;
-    color: black;
+    color: beige;
 }
 a {
 	color: darkgoldenrod;
@@ -142,11 +146,11 @@ nav li a{
     color: black !important;
   }
 /*______BTN_____*/
-.signup-btn{
+a .signup-btn{
     background-color: beige;
     color: black;
 }
-.signup-btn:hover{
+a .signup-btn:hover{
     background-color: darkgoldenrod;
     border: beige;
     color: beige;

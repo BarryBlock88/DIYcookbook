@@ -20,7 +20,6 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-
 @app.route("/home")
 def home():
 
@@ -155,7 +154,7 @@ def search_brews(query):
 
     if search:
         brews = list(
-            mongo.db.brews.find({"category_name": query}))
+            mongo.db.brews.find({"difficulties": query}))
 
     return render_template("brews.html", brews=brews)
 
