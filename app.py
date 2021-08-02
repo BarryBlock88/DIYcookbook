@@ -20,6 +20,7 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+
 @app.route("/home")
 def home():
 
@@ -32,10 +33,11 @@ def signup():
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
-              {"username": request.form.get("username").lower()}
+              {"username": request.form.get("username").lower()} or {"email": request.form.get("email").lower()})
+
         if existing_user:
-            flash("Username already exists!")
-        return redirect(url_for("signup"))
+            flash("Username already exists")
+            return redirect(url_for("signup"))
 
         signup = {
             "email": request.form.get("email").lower(),
@@ -49,31 +51,30 @@ def signup():
         flash("Sign up Successfull!")
     return render_template("signup.html")
 
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         # check if username exists in database
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()}
+            {"username": request.form.get("username").lower()} or {"email": request.form.get("email").lower()})
 
-            if existing_user:
-                # ensure hashed password matches user input
-                if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
+        if existing_user:
+            # ensure hashed password matches user input
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower() or request.form.get("email").lower() 
                     flash("Welcome, {}".format(request.form.get("username")))
-                else:
-                    # invalid password match
-                    flash("Incorrect Username and/or Password")
-                    return redirect(url_for("login"))
+            else:
+                # invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
 
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return render_template("signup.html")
+    return render_template("login.html")
 
 
 # signuped user logout function
@@ -83,6 +84,7 @@ def logout():
     # User session cookies removal
     session.pop("user")
     return redirect(url_for("login"))
+
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
@@ -97,10 +99,12 @@ def profile(username):
     return redirect(url_for("login"))
 
 
+
 @app.route("/get_categories")
 def get_categories():
     categories = list(mongo.db.categories.find())
     return render_template("categories.html", categories=categories)
+    
 
 
 @app.route("/add_categories", methods=["GET", "POST"])
@@ -130,6 +134,7 @@ def edit_category(category_id):
     return render_template("edit_category.html", category=category)
 
 
+
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
@@ -144,12 +149,13 @@ def get_brews():
     return render_template("brews.html", brews=brews)
 
 
+
 @app.route('/search_brews/<query>', methods=['GET', 'POST'])
 def search_brews(query):
 
     if search:
         brews = list(
-            mongo.db.brews.find({"difficulties": query}))
+            mongo.db.brews.find({"category_name": query}))
 
     return render_template("brews.html", brews=brews)
 
@@ -215,7 +221,6 @@ def delete_brew(brew_id):
     mongo.db.brews.remove({"_id": ObjectId(brew_id)})
     flash("Brew now Deleted!")
     return redirect(url_for("get_brews"))
-
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

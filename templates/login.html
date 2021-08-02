@@ -4,14 +4,14 @@
 <h2 class="center-align">Already a user?</h2>
 <h3 class="center-align">Login</h3>
 {% if session.user %}
-    <div class="row">
+<div class="row">
     <div class=" col s12"><img class="centre-align"
-        src="https://media.istockphoto.com/photos/japanese-cheer-picture-id1192857007?k=6&m=1192857007&s=612x612&w=0&h=L23yqL9z8kcR4azQl5meO51x96Yhi6HYDsrhuAXa2Ro="
-    alt="cheers glass beers">
+            src="https://media.istockphoto.com/photos/japanese-cheer-picture-id1192857007?k=6&m=1192857007&s=612x612&w=0&h=L23yqL9z8kcR4azQl5meO51x96Yhi6HYDsrhuAXa2Ro="
+            alt="cheers glass beers">
     </div>
 </div>
 {% else %}
-    {{ super() }}
+{{ super() }}
 {% endif %}
 <div class="row">
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
@@ -21,7 +21,7 @@
                 <div class="input-field col s12">
                     <input id="username" name="username" type="text" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="username"><i class="fas fa-user-circle"></i>  Username </label>
+                    <label for="username"><i class="fas fa-user-circle"></i> Username </label>
                 </div>
             </div>
             <!-- password -->
@@ -29,20 +29,21 @@
                 <div class="input-field col s12">
                     <input id="password" name="password" type="password" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="password"><i class="fas fa-key"></i>   Password </label>
+                    <label for="password"><i class="fas fa-key"></i> Password </label>
                 </div>
             </div>
             <!-- user login submit-->
             <div class="row">
                 <div class="col s12 center-align">
                     <button type="submit" class="btn-large form-btn center text-shadow">
-                        Login   <i class="fas fa-sign-in-alt"></i>
+                        Login <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
             </div>
-             <!-- sign up as a new user -->
+            <input type="hidden" name="next" value="{{ request.args.get('next', '') }}" />
+            <!-- sign up as a new user -->
             <div id="signup" class="center-align">
-                <h5>Dont have an Account?  <a href="{{ url_for('signup') }}" id="signup-link">Sign Up</a></h5>
+                <h5>Dont have an Account? <a href="{{ url_for('signup') }}" id="signup-link">Sign Up</a></h5>
             </div>
         </div>
     </form>
