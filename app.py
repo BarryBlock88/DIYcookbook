@@ -33,7 +33,7 @@ def signup():
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
-              {"username": request.form.get("username").lower()} or {"email": request.form.get("email").lower()})
+              {"username": request.form.get("username").lower()})
 
         if existing_user:
             flash("Username already exists")
@@ -51,19 +51,20 @@ def signup():
         flash("Sign up Successfull!")
     return render_template("signup.html")
 
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         # check if username exists in database
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()} or {"email": request.form.get("email").lower()})
+            {"username": request.form.get("username").lower()})
 
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower() or request.form.get("email").lower() 
-                    flash("Welcome, {}".format(request.form.get("username")))
+            existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -86,7 +87,6 @@ def logout():
     return redirect(url_for("login"))
 
 
-
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -99,13 +99,11 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-
 @app.route("/get_categories")
 def get_categories():
     categories = list(mongo.db.categories.find())
     return render_template("categories.html", categories=categories)
     
-
 
 @app.route("/add_categories", methods=["GET", "POST"])
 def add_category():
@@ -134,7 +132,6 @@ def edit_category(category_id):
     return render_template("edit_category.html", category=category)
 
 
-
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
@@ -147,7 +144,6 @@ def get_brews():
 
     brews = list(mongo.db.brews.find())
     return render_template("brews.html", brews=brews)
-
 
 
 @app.route('/search_brews/<query>', methods=['GET', 'POST'])
@@ -188,7 +184,8 @@ def add_brew():
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
-    return render_template("add_brew.html", categories=categories, difficulties=difficulties)
+    return render_template("add_brew.html", categories=categories, 
+                           difficulties=difficulties)
 
 
 @app.route("/edit_brew/<brew_id>", methods=["GET", "POST"])
@@ -213,7 +210,8 @@ def edit_brew(brew_id):
     brew = mongo.db.brews.find_one({"_id": ObjectId(brew_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
-    return render_template("edit_brew.html", brew=brew, categories=categories, difficulties=difficulties)
+    return render_template("edit_brew.html", brew=brew, categories=categories,
+                           difficulties=difficulties)
 
 
 @app.route("/delete_brew/<brew_id>")
