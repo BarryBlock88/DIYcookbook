@@ -61,8 +61,8 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -182,7 +182,7 @@ def add_brew():
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
-    return render_template("edit_brew.html", brew=brew, categories=categories,
+    return render_template("add_brew.html", categories=categories,
                            difficulties=difficulties)
 
 
