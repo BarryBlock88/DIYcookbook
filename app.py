@@ -20,10 +20,8 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-
 @app.route("/home")
 def home():
-
     brews = list(mongo.db.brews.find())
     return render_template("home.html", brews=brews)
 
@@ -33,7 +31,7 @@ def signup():
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
-              {"username": request.form.get("username").lower()})
+            {"username": request.form.get("username").lower()})
 
         if existing_user:
             flash("Username already exists")
@@ -62,9 +60,9 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-            existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username")))
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(request.form.get("username")))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -103,7 +101,7 @@ def profile(username):
 def get_categories():
     categories = list(mongo.db.categories.find())
     return render_template("categories.html", categories=categories)
-    
+
 
 @app.route("/add_categories", methods=["GET", "POST"])
 def add_category():
@@ -184,7 +182,7 @@ def add_brew():
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     difficulties = mongo.db.difficulties.find().sort("difficulty", 1)
-    return render_template("add_brew.html", categories=categories, 
+    return render_template("edit_brew.html", brew=brew, categories=categories,
                            difficulties=difficulties)
 
 
@@ -219,6 +217,7 @@ def delete_brew(brew_id):
     mongo.db.brews.remove({"_id": ObjectId(brew_id)})
     flash("Brew now Deleted!")
     return redirect(url_for("get_brews"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
