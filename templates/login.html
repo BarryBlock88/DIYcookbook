@@ -10,7 +10,6 @@
 {% else %}
 <h2 class="center-align">Already a user?</h2>
 <h3 class="center-align">Login</h3>
-{% endif %}
 <div class="row">
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
         <div class="card-panel">
@@ -39,12 +38,14 @@
                 </div>
             </div>
             <input type="hidden" name="next" value="{{ request.args.get('next', '') }}" />
+
             <!-- sign up as a new user -->
             <div id="signup" class="center-align">
                 <h5>Dont have an Account? <a href="{{ url_for('signup') }}" id="signup-link">Sign Up</a></h5>
             </div>
         </div>
     </form>
+    {% endif %}
 </div>
 
 {% endblock %}
